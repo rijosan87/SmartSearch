@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.21)
 
-project(SmartSearchSKSE VERSION 1.0.1.0 LANGUAGES CXX)
+project(SmartSearchSKSE VERSION 1.3.0.0 LANGUAGES CXX)
 
 if(DEFINED ENV{SKYRIM_FOLDER} AND IS_DIRECTORY "$ENV{SKYRIM_FOLDER}/Data")
     set(OUTPUT_FOLDER "$ENV{SKYRIM_FOLDER}/Data")
@@ -10,20 +10,20 @@ if(DEFINED ENV{SKYRIM_MODS_FOLDER} AND IS_DIRECTORY "$ENV{SKYRIM_MODS_FOLDER}")
     set(OUTPUT_FOLDER "$ENV{SKYRIM_MODS_FOLDER}/${PROJECT_NAME}")
 endif()
 
-# CommonLibSSE-NG 6.7.1 from a local checkout: the colorglass vcpkg registry is stuck on
-# 3.7.0, which predates 1.7.99 support (runtime classification + format-5 address library).
-# 6.x is GPL-3.0-or-later where 3.7.0 was MIT, hence COPYING replacing LICENSE.
+# CommonLibSSE-NG 7.1.0 from a local checkout: the colorglass vcpkg registry is stuck on
+# 3.7.0, which predates 1.7.104 support (runtime classification + format-5 address library).
+# 7.x is GPL-3.0-or-later where 3.7.0 was MIT, hence COPYING replacing LICENSE.
 if(DEFINED ENV{CommonLibSSEPath})
     file(TO_CMAKE_PATH "$ENV{CommonLibSSEPath}" CLIB_SOURCE_DIR)
 elseif(IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/extern/CommonLibSSE-NG")
     set(CLIB_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/extern/CommonLibSSE-NG")
-elseif(IS_DIRECTORY "F:/Modding/SkyrimDev/CommonLibSSE-NG-1799")
-    set(CLIB_SOURCE_DIR "F:/Modding/SkyrimDev/CommonLibSSE-NG-1799")
+elseif(IS_DIRECTORY "F:/Modding/SkyrimDev/CommonLibSSE-NG")
+    set(CLIB_SOURCE_DIR "F:/Modding/SkyrimDev/CommonLibSSE-NG")
 endif()
 
 if(NOT CLIB_SOURCE_DIR OR NOT EXISTS "${CLIB_SOURCE_DIR}/cmake/CommonLibSSE.cmake")
     message(FATAL_ERROR
-        "CommonLibSSE-NG 6.7.1+ checkout not found. Set the CommonLibSSEPath environment "
+        "CommonLibSSE-NG 7.1.0 checkout not found. Set the CommonLibSSEPath environment "
         "variable, or place a checkout at extern/CommonLibSSE-NG.")
 endif()
 
@@ -32,7 +32,7 @@ message(STATUS "CommonLibSSE-NG: ${CLIB_SOURCE_DIR}")
 # NG defaults this ON, which pulls Catch2 and fails configure.
 set(BUILD_TESTS OFF CACHE BOOL "" FORCE)
 
-# SE+AE runtime dispatch = one DLL for SE, AE and 1.7.99.
+# SE+AE runtime dispatch = one DLL for SE, AE and 1.7.104.
 # VR off: we don't target it, and it links openvr_api.lib from an uninitialized submodule.
 set(ENABLE_SKYRIM_SE ON CACHE BOOL "" FORCE)
 set(ENABLE_SKYRIM_AE ON CACHE BOOL "" FORCE)

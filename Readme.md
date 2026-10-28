@@ -23,7 +23,7 @@ This doesn't modify any SkyUI files. You can use the same search box. Works in I
 
 ## Requirements
 
-- Skyrim SE 1.5.97 or AE 1.6.x or AE 1.7.99
+- Skyrim SE 1.5.97 or AE 1.6.x or AE 1.7.104
 - SKSE64
 - Address Library for SKSE Plugins
 - SkyUI 5.2SE or SkyUI 6.x
@@ -35,5 +35,5 @@ Safe to install/remove mid-game.
 ## Building from Source
 
 - Visual Studio 2022 (C++23)
-- [CommonLibSSE-NG](https://github.com/alandtse/CommonLibSSE-NG) (6.7.1+)
+- [CommonLibSSE-NG](https://github.com/alandtse/CommonLibSSE-NG) (7.1.0)
   - Set the `CommonLibSSEPath` environment variable pointing to your CommonLibSSE-NG checkout, or place it at `extern/CommonLibSSE-NG`.
