@@ -1,0 +1,13 @@
+.idea
+.vs
+.vscode/settings.json
+build
+cmake-build*
+dist
+external
+examples
+# Perf measurement logs
+logs/
+# PDB symbol archive (dont ship)
+pdb-archive/
+desktop.ini
